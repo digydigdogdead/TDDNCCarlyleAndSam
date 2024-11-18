@@ -22,10 +22,29 @@ namespace TDDProjectTest
         {
             ShoppingCart testCart = new ShoppingCart();
 
+            // Tests that an empty cart has no price.
+            testCart.GetTotalPrice().Should().Be(0);
+
+
+            // Tests normal use-case:
             testCart.AddItem("egg", 20);
             testCart.AddItem("bread", 10);
 
             testCart.GetTotalPrice().Should().Be(30);
+        }
+
+        [Test]
+        public void AddItemAndGetTotalPriceExtremesTest()
+        {
+            ShoppingCart testCart = new ShoppingCart();
+            // Tests that a negative item cannot be added:
+            testCart.AddItem("the void", -2893);
+            testCart.GetTotalPrice().Should().Be(0);
+
+            // Tests that a extravagantly expensive item cannot be added:
+            testCart.AddItem("thing", double.MaxValue + 1);
+            testCart.GetTotalPrice().Should().Be(0);
+
         }
 
         [Test]

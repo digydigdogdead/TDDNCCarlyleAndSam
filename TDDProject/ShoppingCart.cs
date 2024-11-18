@@ -8,6 +8,9 @@
 
         public void AddItem(string item, double price)
         {
+            if (price < 0.01) return;
+            if (price >= double.MaxValue) return;
+
             if (items.ContainsKey(item))
             {
                 items[item] += price;
@@ -20,6 +23,8 @@
 
         public double GetTotalPrice() 
         {
+            if (items.Count == 0) return 0;
+
             double sum = 0;
             foreach (var price in items.Values)
             {
