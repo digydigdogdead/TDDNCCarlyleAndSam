@@ -36,6 +36,8 @@
 
         public void ApplyDiscount(double discount) 
         {
+            if (discount < 0) {Discount = 0; return;}
+            if (discount > 1) {Discount = 1; return;}
             Discount = discount;
         }
     }

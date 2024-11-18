@@ -60,5 +60,20 @@ namespace TDDProjectTest
             testCart.ApplyDiscount(0.5);
             testCart.GetTotalPrice().Should().Be(50);
         }
+
+        [Test]
+        public void ApplyDiscountExtremes()
+        {
+            ShoppingCart testCart = new ShoppingCart();
+            testCart.AddItem("egg", 20);
+            testCart.AddItem("bread", 80);
+
+            testCart.ApplyDiscount(-348);
+            testCart.GetTotalPrice().Should().Be(100);
+
+            testCart.ApplyDiscount(56);
+            testCart.Discount.Should().Be(1);
+            testCart.GetTotalPrice().Should().Be(0);
+        }
     }
 }
