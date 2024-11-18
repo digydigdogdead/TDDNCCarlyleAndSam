@@ -3,7 +3,7 @@ using TDDProject;
 
 namespace TDDProjectTest
 {
-    public class Tests
+    public class CompassTests
     {
         [SetUp]
         public void Setup()
