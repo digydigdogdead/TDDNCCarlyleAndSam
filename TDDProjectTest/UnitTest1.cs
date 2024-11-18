@@ -12,11 +12,13 @@ namespace TDDProjectTest
         }
 
         [Test]
-        public void Test1()
+        public void RotateTest()
         {
             Compass testCompass = new Compass();
-            testCompass.Rotate(Point.North, Direction.Right);
-            testCompass.Point.Should().Be(Point.East);
+            var result = testCompass.Rotate(Point.North, Direction.Right);
+            result.Should().Be(Point.East);
         }
+
+
     }
 }
