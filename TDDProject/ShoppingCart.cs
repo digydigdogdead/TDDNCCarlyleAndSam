@@ -4,6 +4,8 @@
     {
         private Dictionary<string, double> items = new Dictionary<string, double>();
 
+        public double Discount { get; private set; } = 0;
+
         public void AddItem(string item, double price)
         {
             if (items.ContainsKey(item))
@@ -23,7 +25,13 @@
             {
                 sum += price;
             }
-            return sum;
+            double reduction = 1 - Discount;
+            return sum * reduction;
+        }
+
+        public void ApplyDiscount(double discount) 
+        {
+            Discount = discount;
         }
     }
 }
